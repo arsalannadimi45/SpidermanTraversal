@@ -20,4 +20,6 @@ public:
 		UInputAction* Movement_IA;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 		UInputAction* Look_IA;
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+		UInputAction* Jump_IA;
 };

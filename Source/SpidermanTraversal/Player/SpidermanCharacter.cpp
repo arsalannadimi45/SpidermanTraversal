@@ -9,6 +9,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInput/Public/EnhancedInputComponent.h"
 #include "SpidermanTraversal/Player/InputSystem/InputConfigData.h"
+#include "SpidermanTraversal/Public/Player/PointCollectionManager.h"
 
 // Sets default values
 ASpidermanCharacter::ASpidermanCharacter()
@@ -44,6 +45,10 @@ ASpidermanCharacter::ASpidermanCharacter()
 	GetCharacterMovement()->GroundFriction = 3.f;
 	GetCharacterMovement()->MaxWalkSpeed = 600.f;
 	GetCharacterMovement()->MaxFlySpeed = 600.f;
+
+	PointCollectionManagerChildActor = CreateDefaultSubobject<UChildActorComponent>("PointCollectionManager");
+	PointCollectionManagerChildActor->SetupAttachment(RootComponent);
+	PointCollectionManagerChildActor->SetChildActorClass(APointCollectionManager::StaticClass());
 }
 
 // Called when the game starts or when spawned
@@ -124,6 +129,7 @@ void ASpidermanCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInput
 	// Bind the actions 
 	PEI->BindAction(InputActions->Movement_IA, ETriggerEvent::Triggered, this, &ASpidermanCharacter::Move);
 	PEI->BindAction(InputActions->Look_IA, ETriggerEvent::Triggered, this, &ASpidermanCharacter::Look);
+	PEI->BindAction(InputActions->Jump_IA, ETriggerEvent::Triggered, this, &ASpidermanCharacter::Jump);
 
 
 }

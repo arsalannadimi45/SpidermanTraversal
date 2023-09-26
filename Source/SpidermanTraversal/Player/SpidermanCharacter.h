@@ -30,7 +30,6 @@ protected:
 
 	// Handle look input
 	void Look(const FInputActionValue& Value);
-
 #pragma endregion
 
 
@@ -45,6 +44,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	class UCameraComponent* CameraComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	class UChildActorComponent* PointCollectionManagerChildActor; 
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
